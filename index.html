@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A browser-based Linux incident lab for curious sysadmins.">
+<meta name="theme-color" content="#e9e6db">
+<title>hackme.ca — After Hours Lab</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.mjs"></script>
+</head>
+<body>
+<header class="bar"><div class="wrap header"><a href="./" class="logo"><span>&gt;_</span> hackme.ca</a><nav aria-label="Page"><a href="#lab">Lab</a><a href="#handbook">Handbook</a></nav><span class="online"><i></i> SIMULATION ONLINE</span></div></header>
+<main class="wrap">
+<section class="intro">
+<p class="eyebrow">INDEPENDENT CANADIAN WEB LAB <span aria-hidden="true">✦</span></p>
+<h1>After Hours<span>.</span></h1>
+<p class="lead">The alerts are piling up at a small Canadian hosting co-op. Take the night shift, follow the evidence, and get the lab back in shape.</p>
+<a class="primary" href="#lab">Open case files <span aria-hidden="true">↓</span></a>
+</section>
+<section id="lab" aria-label="Operations lab" class="lab">
+<aside class="cases">
+<div class="section-top"><h2>Case files</h2><span id="progress"></span></div>
+<div id="cases"></div>
+<div class="aside-foot"><button id="export" type="button">Download case notes ↓</button></div>
+</aside>
+<section class="work" aria-label="Current case">
+<div class="brief">
+<p id="metadata" class="eyebrow"></p>
+<h2 id="title"></h2><p id="brief"></p>
+<div class="actions"><button id="hint" type="button">Get a hint</button><button id="restart" type="button">Restart terminal</button><button id="commands" type="button">Show commands</button></div>
+</div>
+<div class="terminal">
+<div class="terminal-head"><span><b aria-hidden="true">&gt;_</b> <span id="host"></span></span><span>SIMULATED SHELL</span></div>
+<div id="output" class="output" role="log" aria-label="Terminal output" tabindex="0"></div>
+<form id="shell" autocomplete="off"><label for="command">operator@lab:$</label><input id="command" name="command" maxlength="240" spellcheck="false" autocapitalize="off" placeholder="Type help and press Enter"><button type="submit" aria-label="Run command">↵</button></form>
+</div>
+</section>
+</section>
+<section id="handbook" class="handbook"><div><p class="eyebrow">FIELD HANDBOOK</p><h2>Working the shift</h2></div><div><details><summary>How do I close a case?</summary><p>Read the incident brief, run <code>help</code>, and inspect the virtual files with <code>ls</code> and <code>cat</code>. Use <code>submit &lt;answer&gt;</code> for the specific finding the brief asks for. Some cases also need a simulated fix before you can submit.</p></details><details><summary>What can the shell access?</summary><p>The shell runs inside this page. All hosts, logs, and files are fictional. Commands have no access to your computer’s shell, local files, or live networks. Completion records are saved in this browser when storage is available.</p></details><details><summary>Keyboard controls</summary><p>Press Enter to run a command. Use ↑ and ↓ in the input to recall commands from this terminal session. Type <code>hint</code> for a clue or <code>clear</code> to clear the output.</p></details></div></section>
+</main>
+<footer class="wrap footer"><span>hackme.ca / After Hours Lab</span><a href="https://github.com/jsdyer/hackme-ca">Source on GitHub ↗</a></footer>
+<noscript><p class="wrap">Enable JavaScript to run the simulated terminal.</p></noscript>
+</body>
+</html>
