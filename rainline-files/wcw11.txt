@@ -1,0 +1,30 @@
+WEST COAST WEB                                          NOVEMBER 1999
+Issue 11 · Text edition                         Rainline BBS, Vancouver
+======================================================================
+
+THE LAST ISSUE
+by packetfox
+
+Our next-site link is broken again. Last month the site after ours had
+moved from the university to somebody's spare 486. This month the person
+with the password moved. If you can still get to the guestbook, leave a
+note with the new address. Old bookmarks are half our directory by now.
+
+A MIRROR IN THE BASEMENT
+
+The local Linux mirror moved off the box that runs the board. The sysop
+says this will help the phone line. The other benefit is that a bad CGI
+script can take down the counter without taking down everybody's mail.
+
+If you keep a mirror, keep the boring bits too. A 404 page might explain
+where a project went. A guestbook might have the only surviving copy of
+the new address. Keep the directory names when you burn the CD.
+
+SIGNING OFF
+
+Thanks to the folks who read the text edition in Lynx, sent us fixes
+over the echo, or called just long enough to grab the issue and clear
+the line. We're leaving the back issues up for as long as the disk lasts.
+
+----------------------------------------------------------------------
+Fictional textfile from the hackme.ca Rainline archive.

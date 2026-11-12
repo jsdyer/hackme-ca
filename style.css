@@ -53,3 +53,7 @@ form input::placeholder{color:#b7c3b2}form input:focus-visible{outline:1px solid
   text-transform: uppercase;
   letter-spacing: .045em;
 }
+
+.intro-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.intro-secondary { color: var(--ink); font: 700 13px/1.5 var(--mono); text-underline-offset: 4px; }
+.intro-secondary:hover { color: var(--red); }

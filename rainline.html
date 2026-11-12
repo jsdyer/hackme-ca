@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101526">
+<meta name="description" content="Dial into a fictional Vancouver BBS circa 1999. Read messages, browse files and play a door game.">
+<title>Rainline BBS — hackme.ca</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="rainline.css">
+<script type="module" src="rainline.mjs"></script>
+</head>
+<body class="rainline">
+<header class="bbs-bar"><div class="wrap bbs-header">
+<a href="./" class="logo"><span>&gt;_</span> hackme.ca</a>
+<a href="./#lab">← After Hours Lab</a>
+</div></header>
+<main class="wrap bbs-main">
+<section class="bbs-hero" aria-labelledby="bbs-title">
+<div>
+<p class="bbs-location">VANCOUVER, BC / NOVEMBER 1999</p>
+<h1 id="bbs-title">Rainline<span> BBS</span></h1>
+<p>Dial in to the board after dark. Read the messages, grab a textfile, or see what you can download before your time on the line runs out.</p>
+</div>
+<div class="modem" aria-label="Modem status">
+<div class="modem-top"><span>RAINLINE / LINE 02</span><span>28.8</span></div>
+<div class="modem-lights" aria-hidden="true"><span><i></i> PWR</span><span><i></i> CD</span></div>
+<div class="modem-line" id="line-status" role="status">NO CARRIER</div>
+</div>
+</section>
+
+<section class="bbs-shell" aria-label="Rainline terminal">
+<aside class="bbs-menu" aria-label="BBS areas">
+<h2>Board menu</h2>
+<button type="button" class="dial-button" id="dial">Dial 555-0142</button>
+<nav id="board-menu" aria-label="Board menu" hidden>
+<button type="button" data-view="welcome"><span aria-hidden="true">01</span> Welcome</button>
+<button type="button" data-view="messages"><span aria-hidden="true">02</span> Messages</button>
+<button type="button" data-view="files"><span aria-hidden="true">03</span> File area</button>
+<button type="button" data-view="door"><span aria-hidden="true">04</span> Last Call</button>
+</nav>
+<button type="button" id="hangup" class="hangup" hidden>Hang up</button>
+</aside>
+
+<div class="bbs-screen">
+<section id="offline">
+<p class="prompt" aria-hidden="true">ATZ<br>OK</p>
+<h2>Ready to dial</h2>
+<p>Line 02 is open for a simulated call. Pick up the connection to enter the board.</p>
+</section>
+
+<section id="welcome" hidden>
+<p class="prompt" aria-hidden="true">ATDT5550142<br>CONNECT 28800</p>
+<h2 tabindex="-1">Welcome to Rainline</h2>
+<p>You’re on line 02 as <strong>GUEST</strong>. Please keep the line clear for the midnight mail run.</p>
+<p>The message board has a stuck mailbag, and the file area has a fresh issue of <cite>West Coast Web</cite>. If you’re here to play, try <button type="button" class="text-button" data-jump="door">Last Call</button>.</p>
+<a href="./?case=dialup#lab">Read the original modem incident ↗</a>
+</section>
+
+<section id="messages" hidden>
+<h2 tabindex="-1">Public messages</h2>
+<article class="bbs-post">
+<p class="post-info">#0181 · 18 NOV 1999 · <b>sysop</b></p>
+<h3>Midnight mail run</h3>
+<p>Posts are showing up here, but the Linux echo hasn’t made it down the coast. I left the spool and poll logs in the lab. If you can work out where we should be calling, the next shift could use the help.</p>
+<a href="./?case=relay#lab">Open The Midnight Mailbag ↗</a>
+</article>
+<article class="bbs-post">
+<p class="post-info">#0180 · 17 NOV 1999 · <b>packetfox</b></p>
+<h3>Re: getting PLIP to work</h3>
+<p>Finally got the two Linux boxes talking over the parallel cable. Now I can move the HOWTOs without occupying the phone line. If anyone has a spare hub, I’ll trade it for a stack of floppies.</p>
+</article>
+<article class="bbs-post">
+<p class="post-info">#0179 · 16 NOV 1999 · <b>nightowl</b></p>
+<h3>Webring moved again</h3>
+<p>The next-site link on the old page is dead. I’d try the guestbook before digging out last month’s bookmarks.</p>
+<a href="./?case=webring#lab">Open Next Site in the Ring ↗</a>
+</article>
+</section>
+
+<section id="files" hidden>
+<h2 tabindex="-1">File area</h2>
+<p>Textfiles from the Rainline archive. These downloads are plain text.</p>
+<ul class="bbs-files">
+<li><a download href="rainline-files/wcw11.txt">WCW11.TXT ↓</a><p>West Coast Web, issue 11. The text edition of the final issue.</p></li>
+<li><a download href="rainline-files/callers.txt">CALLERS.TXT ↓</a><p>Sysop’s notes for first-time callers and midnight regulars.</p></li>
+</ul>
+</section>
+
+<section id="door" hidden>
+<p class="bbs-location">DOOR GAMES / FILE TRANSFER</p>
+<h2 tabindex="-1">Last Call</h2>
+<p>Get the whole file before the call ends. Each choice uses one call slot. Read the line forecast before you send. Finishing early earns bonus points, and failed checks cost points.</p>
+<div class="door-setup">
+<label for="profile">Connection</label>
+<select id="profile"></select>
+<button type="button" id="start-transfer">Start transfer</button>
+</div>
+<p id="profile-detail" class="dim"></p>
+<div id="transfer" hidden>
+<div class="transfer-readout">
+<label for="transfer-meter">File transfer <span id="blocks"></span></label>
+<progress id="transfer-meter" value="0" max="1"></progress>
+</div>
+<p class="turns" id="turns"></p>
+<p id="forecast"></p>
+<div id="transfer-actions" class="transfer-actions"></div>
+</div>
+<p id="transfer-result" role="status"></p>
+<p class="dim" id="personal-best"></p>
+</section>
+</div>
+</section>
+<noscript><p>Enable JavaScript to dial into the simulated board.</p></noscript>
+</main>
+<footer class="wrap bbs-footer"><span>Fictional BBS · Runs in your browser</span><a href="https://github.com/jsdyer/hackme-ca">Source on GitHub ↗</a></footer>
+</body>
+</html>

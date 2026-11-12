@@ -13,7 +13,8 @@ try {
   // A blocked storage API should not prevent play.
 }
 
-let current = cases[0];
+const requestedCase = new URLSearchParams(location.search).get("case");
+let current = cases.find(mission => mission.id === requestedCase) || cases[0];
 const sessions = new Map();
 let session;
 let historyIndex = 0;

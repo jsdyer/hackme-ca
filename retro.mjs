@@ -1,3 +1,5 @@
+import { relayCase } from "./relay-case.mjs";
+
 export const retroCases = [
   {
     id: "dialup", host: "modem-rack", title: "One Ring Short", topic: "Dial-up BBS", level: "Intro",
@@ -44,5 +46,6 @@ export const retroCases = [
     hints: ["Start at browse index.htm. The guestbook is still in the mirror.", "Browse guestbook.htm, then links.htm, then files.htm."],
     evidence: ["mirror-index.txt", "guestbook.htm", "links.htm", "files.htm"], answer: "wcw11.zip",
     lesson: "Guestbooks and links pages can preserve migration clues. An offline mirror can also retain pages after their original navigation disappears."
-  }
+  },
+  relayCase,
 ];
