@@ -1,3 +1,5 @@
+import { retroCases } from "./retro.mjs";
+
 export const cases = [
   {
     id: "dns", host: "resolver", title: "The :50 Sweep", topic: "DNS", level: "Intro",
@@ -58,4 +60,5 @@ export const cases = [
     operation: { command: "revoke", target: "key-41", result: "Revoked key-41 on the simulated bastion. Backup access remains active." },
     lesson: "Correlating account lifecycle and authentication records helps you revoke stale access without breaking active jobs."
   },
+  ...retroCases.map(mission => ({ ...mission, era: "retro" })),
 ];

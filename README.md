@@ -1,6 +1,6 @@
 # hackme.ca — After Hours Lab
 
-An interactive incident lab set at a fictional Canadian hosting co-op. Work through five cases from a simulated Linux shell: DNS reverse-lookup traffic, an Apache/PHP-FPM socket mismatch, a cross-border routing detour, a checksum-based restore, and a retired SSH key.
+An interactive incident lab set at a fictional Canadian hosting co-op. Work through eight cases from a simulated Linux shell: DNS reverse-lookup traffic, an Apache/PHP-FPM socket mismatch, a cross-border routing detour, a checksum-based restore, a retired SSH key, a 28.8k dial-up BBS, a missing TCP reply, and a broken webring link.
 
 ## Run locally
 
@@ -20,4 +20,4 @@ Serve the repository root over HTTPS with Apache or another static host. The sit
 
 Add an entry to `cases.mjs` with a unique ID, brief, virtual files, hints, required evidence, answer, and debrief. Optionally add a simulated operation with a command, target, and result. Keep the case evidence fictional or use a deliberately sanitized public dataset.
 
-Possible follow-up cases include a retro dial-up mystery, a packet-capture investigation, and an IndieWeb scavenger hunt through an offline mirror.
+The three period cases live in `retro.mjs`. The BBS responds to simulated modem and dial commands, the packet trace is bundled as text, and the webring is a small local collection of pages explored with `browse`.

@@ -1,5 +1,5 @@
 export function newSession() {
-  return { read: new Set(), hint: 0, operated: false };
+  return { read: new Set(), hint: 0, operated: false, connected: false };
 }
 
 export function runCase(mission, session, input) {
@@ -18,6 +18,8 @@ export function runCase(mission, session, input) {
         "pwd                Show the current virtual directory",
         "whoami             Show the current operator",
         "hint               Reveal the next clue",
+        ...(mission.dial ? ["dial <number>      Call the simulated modem", "board              Read BBS messages after connecting"] : []),
+        ...(mission.pages ? ["browse <page>      Open a page in the offline mirror"] : []),
         ...(mission.operation ? [mission.operation.command + " <id>  Apply the simulated fix"] : []),
         "submit <answer>    Close the case with your finding",
         "clear              Clear terminal output",
@@ -43,10 +45,24 @@ export function runCase(mission, session, input) {
       if (matches.length) session.read.add(file);
       return { text: matches.join("\n") || "No matches." };
     }
+    case "dial":
+      if (!mission.dial) return warn("This case has no modem.");
+      if (argument !== mission.dial.number) return warn("NO DIALTONE — use the local test number from the rack notes.");
+      if (!session.operated) return warn("RINGBACK\nRINGBACK\nNO CARRIER");
+      session.connected = true;
+      return { text: mission.dial.banner };
+    case "board":
+      if (!mission.dial || !session.connected) return warn("Connect to the board first.");
+      return { text: mission.dial.messages };
+    case "browse":
+      if (!mission.pages || !Object.hasOwn(mission.pages, argument)) return warn("Page unavailable in this mirror.");
+      session.read.add(argument);
+      return { text: mission.pages[argument] };
     case "submit":
       if (!argument) return warn("Usage: submit <answer>");
       if (!inspected()) return warn("Review the evidence files from the brief before submitting.");
       if (mission.operation && !session.operated) return warn("Apply the simulated fix before submitting.");
+      if (mission.dial && !session.connected) return warn("Dial in to confirm the board name before submitting.");
       if (argument.toLowerCase() !== mission.answer) return warn("That finding does not match the evidence. Try hint for a clue.");
       return { text: "CASE CLOSED — " + mission.lesson, kind: "success", closed: true };
     default:

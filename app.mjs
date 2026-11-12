@@ -112,7 +112,7 @@ for (const [index, mission] of cases.entries()) {
     start(mission);
     el("title").scrollIntoView({ block: "nearest" });
   });
-  el("cases").append(button);
+  el(mission.era === "retro" ? "retro-cases" : "cases").append(button);
   buttons.push([mission, button, state]);
 }
 

@@ -42,3 +42,14 @@ form input::placeholder{color:#b7c3b2}form input:focus-visible{outline:1px solid
 .footer{display:flex;justify-content:space-between;gap:12px;padding-block:17px;font:12px var(--mono)}
 @media(max-width:720px){.lab,.handbook{grid-template-columns:1fr}.header nav{margin-left:auto}.online{display:none}.case{padding-block:10px}.intro{padding-bottom:30px}}
 @media(max-width:360px){nav{gap:9px}.logo{font-size:16px}.footer{flex-wrap:wrap}}
+
+.case-group {
+  margin: 0;
+  padding: 8px 11px;
+  border-top: 1px solid var(--line);
+  background: #e3ded0;
+  color: var(--muted);
+  font: 700 11px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .045em;
+}
