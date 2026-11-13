@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101526">
+<meta name="description" content="Play Rainline terminal games and look up public records for the hackme.ca project network.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://cloudflare-dns.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Field Console — hackme.ca</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="rainline.css">
+<link rel="stylesheet" href="console.css">
+<script type="module" src="console.mjs"></script>
+</head>
+<body class="rainline console-page">
+<header class="bbs-bar"><div class="wrap bbs-header">
+<a href="./" class="logo"><span>&gt;_</span> hackme.ca</a>
+<nav aria-label="Project"><a href="./#lab">Case files</a><a href="rainline.html">Rainline BBS</a></nav>
+</div></header>
+<main class="wrap">
+<section class="console-hero" aria-labelledby="console-title">
+<p class="bbs-location">HACKME.CA / FIELD TERMINAL</p>
+<h1 id="console-title">Field Console<span>.</span></h1>
+<p>Play a Rainline door game or follow the public DNS, certificate and archive records for this little network of sites.</p>
+</section>
+<div class="console-grid">
+<section class="console-terminal" aria-labelledby="terminal-title">
+<div class="console-bar"><h2 id="terminal-title">Terminal</h2><span id="mode">READY</span></div>
+<div id="console-output" class="console-output" role="log" aria-label="Console output" tabindex="0"></div>
+<form id="console-form" autocomplete="off">
+<label for="console-input"><span class="screen-reader">Terminal command</span><span aria-hidden="true">guest@field:$</span></label>
+<input id="console-input" maxlength="240" spellcheck="false" autocapitalize="off" placeholder="Type help">
+<button type="submit">Run</button>
+</form>
+</section>
+<aside class="console-sidebar" aria-label="Console shortcuts">
+<section class="console-panel" aria-labelledby="games-title">
+<h2 id="games-title">Rainline doors</h2>
+<div id="games-list" class="games-list"></div>
+</section>
+<section class="console-panel" aria-labelledby="records-title">
+<h2 id="records-title">Public records</h2>
+<form id="record-form">
+<div class="record-fields">
+<div><label for="record-target">Domain</label><select id="record-target"></select></div>
+<div><label for="record-type">DNS type</label><select id="record-type"></select></div>
+</div>
+<div class="record-actions"><button id="dns-button" type="submit">Query DNS</button><button id="links-button" type="button">Find records</button></div>
+</form>
+<p class="source-note">Live DNS sends the selected hostname and record type to Cloudflare’s public resolver. Archive, certificate and registration links open on their respective sites.</p>
+<button id="export-dns" class="export-dns" type="button" disabled>Download DNS notes</button>
+</section>
+</aside>
+</div>
+<section class="console-notice" id="isp-notice" hidden aria-labelledby="notice-title">
+<p class="bbs-location">FICTIONAL ISP NOTICE / IWI-451</p>
+<h2 id="notice-title">Interweb International</h2>
+<p id="notice-copy"></p>
+<div class="notice-actions">
+<button id="appeal" type="button">File a courtesy appeal</button>
+<a href="https://interweb.international/" target="_blank" rel="noopener noreferrer">Visit Interweb International ↗</a>
+<a href="https://github.com/jsdyer/interweb-international" target="_blank" rel="noopener noreferrer">Interweb project source ↗</a>
+</div>
+</section>
+<noscript><p>Enable JavaScript to use the console.</p></noscript>
+</main>
+<footer class="wrap bbs-footer"><span>hackme.ca / After Hours Lab</span><a href="https://github.com/jsdyer/hackme-ca">Source on GitHub ↗</a></footer>
+</body>
+</html>

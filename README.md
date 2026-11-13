@@ -18,6 +18,18 @@ Open `rainline.html` from the home page and dial in as a guest. The board has fi
 
 `rainline.html`, `rainline.css`, and `rainline.mjs` contain the board. Textfiles live in `rainline-files/`. The game rules and profiles are in `door.mjs`. Use `?case=<id>#lab` on the home page to link to an individual incident.
 
+## Field Console
+
+Open `console.html` from the home page. Type `games` to list the keyboard-only games, then `play lost-carrier` or `play cache-lock`. Each game has its own `help` menu. Type `quit` to exit.
+
+- `scope` lists the supported project domains.
+- `dns superapp.ca MX` looks up live DNS and supports downloading the latest response with a UTC timestamp.
+- `compare hackme.ca superapp.ca NS` retrieves the same record type for two supported domains in one report.
+- `records superapp.ca` lists links to domain-level archive, certificate transparency and registration sources.
+- An out-of-scope hostname or the simulated `scan` command triggers a fictional Interweb International notice. `appeal` is handled locally.
+
+Live DNS uses Cloudflare’s public resolver directly from the browser, only on an explicit command or form submission. Lookups are limited to the exact apex names in `records-core.mjs`. The console does not probe hosts, follow DNS answers with additional app requests, or contact Interweb International when a notice appears. The other public sources are normal outbound links. No query history is stored across reloads.
+
 ## Deploy
 
 Serve the repository root over HTTPS with Apache or another static host. The site also works on GitHub Pages with `main` and the repository root as the source. Set the Pages custom domain and DNS separately if using GitHub Pages for hackme.ca. JavaScript module files (`.mjs`) must be served with a JavaScript MIME type.
